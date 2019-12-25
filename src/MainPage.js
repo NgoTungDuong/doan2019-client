@@ -18,6 +18,8 @@ class MainPage extends Component {
   async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
+    console.log(this.state.account);
+    
   }
 
   async loadBlockchainData() {
@@ -70,11 +72,11 @@ class MainPage extends Component {
     event.preventDefault();
     if(this.state.account) {
       console.log('Submitingg ...');
-      console.log(name, file)
+      // console.log(name, file)
       this.setState({fileName: name})
       window.alert('Please wait a second to upload ....')
       ipfs.add(file, async (error, result) => {
-        console.log('IPFS result', result)
+        // console.log('IPFS result', result)
         if(!result) return window.alert('Server busy, please try again!')
         const ipfsHash = result[0].hash;
         this.setState({ipfsHash});
@@ -93,8 +95,8 @@ class MainPage extends Component {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data)
-            console.log(data.data[0])
+            // console.log(data)
+            // console.log(data.data[0])
             for(let i=0; i<data.data.length; i++) {
               this.setState({
                 listIpfsHash: [
@@ -107,7 +109,7 @@ class MainPage extends Component {
           .catch(error => console.log(error))
         console.log(this.state.listIpfsHash)
         this.state.listIpfsHash.map(async (item) => {
-          console.log(item)
+          // console.log(item)
           if(ipfsHash === item) {
             return this.setState({isDuplicateFile: true})
           }
@@ -150,7 +152,7 @@ class MainPage extends Component {
     // get last transaction from account
     var txlist = api.account.txlist(this.state.account, 1, 'latest', 1, 100, 'asc')
     await txlist.then((result) => {
-      console.log(result)
+      // console.log(result)
       console.log(result.result[result.result.length - 1].hash)
       var transactionHash = result.result[result.result.length - 1].hash
       this.setState({transactionHash})
@@ -177,7 +179,7 @@ class MainPage extends Component {
   }
 
   handleOnclick = async (file) => {
-    console.log(file) // ==> transactionHash
+    // console.log(file) // ==> transactionHash
     if(file) {
       await window.web3.eth.getTransaction(file).then(result => {
         if(result) {
