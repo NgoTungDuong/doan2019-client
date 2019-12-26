@@ -40,7 +40,7 @@ export default class DropFile extends Component {
                     <input type="file" accept="application/json" onChange={this.handleOnChange} style={{cursor: "pointer"}}/>
                 </div>
                 {this.state.fileName && this.state.transactionHash ? (
-                    <Link to={`/result/${this.state.transactionHash}`}>
+                    <Link to={`/result`}>
                         <Button size="large" type="primary" className="mt-5" onClick={this.onClick}>
                             <Icon id="icon" type="check" />
                             Check File
