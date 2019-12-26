@@ -10,6 +10,7 @@ export default class CheckResult extends Component {
         setTimeout(() => {
             this.setState({isLoading: false})
         }, 3000);
+        
     }
     state = {
         isLoading: true
@@ -40,8 +41,8 @@ export default class CheckResult extends Component {
                                         <img style={{width: "50%", display: "inline"}} src={`https://ipfs.infura.io/ipfs/${this.props.fileHash}`} alt="img" />
                                     </div>
                                     <h3>Your Infomation</h3>
-                                    <h6>File Name: Cong Chung CMT</h6>
-                                    <h6>Created At: 17/12/2019-15:08pm</h6>
+                                    <h6>{this.props.fileName}</h6>
+                                    <h6>Created At: {this.props.createdAt}</h6>
                                 </div>
                             </Result>
                         </div>

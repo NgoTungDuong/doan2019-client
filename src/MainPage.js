@@ -191,6 +191,19 @@ class MainPage extends Component {
             this.setState({ fileHash: resultDecoder.inputs[0]})
             console.log('link anh: ', this.state.fileHash)
           }
+          fetch(`http://localhost:3001/api/posts/get/${file}`, {
+            method: 'GET'
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data)
+              this.setState({
+                fileName: data.data.fileName,
+                createdAt: data.data.createdAt
+              })
+            })
+            .catch(e => console.log(e))
+
         }else {
           // return window.alert('file cong chung sai')
           this.setState({ fileSuccess: "false" })
@@ -221,6 +234,8 @@ class MainPage extends Component {
                   onLoadDataDownload={this.onLoadDataDownload}
                   fileHash={this.state.fileHash}
                   fileSuccess={this.state.fileSuccess}
+                  fileName={this.state.fileName}
+                  createdAt={this.state.createdAt}
                 />}
             </div>
           </div>

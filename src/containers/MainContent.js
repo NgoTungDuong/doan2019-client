@@ -23,7 +23,7 @@ class MainContent extends React.Component {
                                         <Route exact path='/' render={(props) => <DropFile {...props} handleOnclick={this.props.handleOnclick}/>} />
                                         <Route path='/create-file' render={(props) => <CreateFile {...props} handleOnsubmit={this.props.handleOnsubmit} onLoadDataDownload={this.props.onLoadDataDownload}/>} />
                                         {/* {this.props.fileHash ? <Route patch='/result' render={(props) => <Result {...props} fileHash={this.props.fileHash}/>} /> : null} */}
-                                        <Route path='/result' render={(props) => <CheckResult {...props} fileSuccess={this.props.fileSuccess} fileHash={this.props.fileHash}/>} />
+                                        <Route path='/result' render={(props) => <CheckResult {...props} fileSuccess={this.props.fileSuccess} fileHash={this.props.fileHash} fileName={this.props.fileName} createdAt={this.props.createdAt}/>} />
                                     </BrowserRouter>
                                 </MDBCol>
                             </MDBRow>
