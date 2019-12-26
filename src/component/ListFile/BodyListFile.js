@@ -21,7 +21,7 @@ export default class BodyListFile extends Component {
     }
 
     async componentWillMount() {
-        await fetch(`http://localhost:3001/api/posts/get-page-file?pageNumber=${this.state.page + 1}&pageSize=${this.state.pageSize}`, {
+        await fetch(`https://notarized-backend.herokuapp.com/api/posts/get-page-file?pageNumber=${this.state.page + 1}&pageSize=${this.state.pageSize}`, {
                 method: 'GET'
             })
                 .then(res => res.json())
@@ -45,7 +45,7 @@ export default class BodyListFile extends Component {
         this.setState({page})
         
         try {
-            await fetch(`http://localhost:3001/api/posts/get-page-file?pageNumber=${page}&pageSize=${this.state.pageSize}`, {
+            await fetch(`https://notarized-backend.herokuapp.com/api/posts/get-page-file?pageNumber=${page}&pageSize=${this.state.pageSize}`, {
                 method: 'GET'
             })
                 .then(res => res.json())

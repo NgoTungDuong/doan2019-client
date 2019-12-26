@@ -19,7 +19,7 @@ export default class LoginAdmin extends Component {
         e.preventDefault();
         // fetch data here
 
-        await fetch(`http://localhost:3001/api/users/login`, {
+        await fetch(`https://notarized-backend.herokuapp.com/api/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

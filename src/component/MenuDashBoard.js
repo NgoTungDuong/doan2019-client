@@ -18,7 +18,7 @@ export default class MenuDashBoard extends Component {
     }
     logoutAdmin = async (e) =>{
         e.preventDefault()
-        await fetch(`http://localhost:3001/api/users/logout`, {
+        await fetch(`https://notarized-backend.herokuapp.com/api/users/logout`, {
             method: 'GET'
         })  
             .then(res => res.json())

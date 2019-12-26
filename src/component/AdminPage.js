@@ -9,7 +9,7 @@ export default class AdminPage extends Component {
     }
     async componentWillMount() {
         console.log('ADMINPAGE')
-        await fetch(`http://localhost:3001/api/posts/get`, {
+        await fetch(`https://notarized-backend.herokuapp.com/api/posts/get`, {
             method: 'GET'
         })
             .then(res => res.json())
