@@ -18,7 +18,6 @@ class MainPage extends Component {
   async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
-    console.log(this.state.account);
     
   }
 
@@ -61,7 +60,8 @@ class MainPage extends Component {
     } if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider)
     } else {
-      window.alert('If you want to upload file, use metamask please!')
+      window.alert('Nếu bạn muốn tải lên tài liệu, hãy sử dụng tiện ích MetaMask của Chrome để kết nối với mạng lưới BlockChain!')
+      this.setState({loading: false})
     }
   }
   
@@ -74,14 +74,14 @@ class MainPage extends Component {
       console.log('Submitingg ...');
       // console.log(name, file)
       this.setState({fileName: name})
-      window.alert('Please wait a second to upload ....')
+      window.alert('Chờ 1 chút trong quá trình tải dữ liệu lên BlockChain, khi dữ liệu đã lưu hãy hoàn tất quá trình tải lên trong hộp thoại mở lên MetaMask')
       ipfs.add(file, async (error, result) => {
         // console.log('IPFS result', result)
-        if(!result) return window.alert('Server busy, please try again!')
+        if(!result) return window.alert('Máy chủ đang bận, xin vui lòng thử lại!')
         const ipfsHash = result[0].hash;
         this.setState({ipfsHash});
         if(!ipfsHash) {
-          window.alert('Server busy, please try again ...')
+          window.alert('Máy đang chủ bận, xin vui lòng thử lại ...')
         }
         if(error) {
           console.log(error);
@@ -120,7 +120,7 @@ class MainPage extends Component {
             isDuplicateFile: false
           })
           return (
-            window.alert('File is already upload... Please choose another file!')
+            window.alert('Tệp tài liệu đã được tải lên ... xin chọn tệp tài liệu khác!')
           )
         } else {
             // Store file on the BlockChain
@@ -139,7 +139,7 @@ class MainPage extends Component {
 
             console.log('tesstrerererer')
         }
-        window.alert('Create Success, confirm to upload')
+        window.alert('Tài liệu đã tải lên thành công')
         
       })
     }
@@ -211,7 +211,7 @@ class MainPage extends Component {
         }
       })
     } else {
-      window.alert('Choose your file!')
+      window.alert('Xin hãy chọn tài liệu để kiểm tra!')
     }
   }
 

@@ -27,11 +27,11 @@ export default class CheckResult extends Component {
                         <div style={{backgroundColor: "white"}}>
                             <Result
                                 status="success"
-                                title="Successfully ! Your File Is Correct"
+                                title="Tài liệu của bạn đã được công chứng !"
                                 extra={
                                     <Link to='/'>
                                         <Button type="primary" key="console">
-                                            Go Home
+                                            Về trang chính
                                         </Button>
                                     </Link>
                                 }
@@ -40,9 +40,9 @@ export default class CheckResult extends Component {
                                     <div className="text-center mb-3">
                                         <img style={{width: "50%", display: "inline"}} src={`https://ipfs.infura.io/ipfs/${this.props.fileHash}`} alt="img" />
                                     </div>
-                                    <h3>Your Infomation</h3>
+                                    <h3>Thông tin của bạn</h3>
                                     <h6>{this.props.fileName}</h6>
-                                    <h6>Created At: {this.props.createdAt}</h6>
+                                    <h6>Ngày tạo: {this.props.createdAt}</h6>
                                 </div>
                             </Result>
                         </div>
@@ -56,18 +56,21 @@ export default class CheckResult extends Component {
                         <div style={{backgroundColor: "white"}}>
                             <Result
                                 status="error"
-                                title="Submission Failed"
+                                title="Tài liệu chưa được công chứng"
                                 extra={
                                     <Link to='/'>
                                         <Button type="primary" key="console">
-                                            Go Home
+                                            Về trang chính
                                         </Button>
                                     </Link>
                                 }
                             >
                                 <div>
                                 <Paragraph>
-                                    <Icon style={{color:"red"}} type="close-circle" /> Your file failed 
+                                    <Icon style={{color:"red"}} type="close-circle" />Tài liệu của bạn chưa được xác thực
+                                </Paragraph>
+                                <Paragraph>
+                                <Icon style={{color:"red"}} type="close-circle" />Liên hệ với người có chức năng để có tài liệu được kiểm chứng
                                 </Paragraph>
                                 </div>
                             </Result>

@@ -23,7 +23,7 @@ export default class CreateFile extends Component {
                 }
             }
         } else {
-            window.alert('Please choose exactly file type JPG or PNG !')
+            window.alert('Hãy chọn đúng định dạng tệp tài liệu ! Đuôi file có JPG hoặc PNG !')
             document.getElementById("uploadCaptureInputFile").value = "";
             return
         }
@@ -68,7 +68,7 @@ export default class CreateFile extends Component {
             console.log('da tai thanh cong ma txhash: ', localStorage.getItem('transactionHash'));
             localStorage.clear()
         } else {
-            window.alert('You need create file first to download file !')
+            window.alert('Bạn cần phải tạo tài liệu trước khi tải tệp xuống !')
         }
         
     }
@@ -78,13 +78,13 @@ export default class CreateFile extends Component {
             <div>
                 <form style={{margin: "20%"}} onSubmit={this.onSubmit}> 
                     <div className="form-group">
-                        <p className="w-100">SubCribe</p>
+                        <p className="w-100">TẠO MỚI TÀI LIỆU</p>
                         <input required value={this.state.fileName} onChange={e => this.setState({fileName: e.target.value})} className="form-control" type="text" placeholder='file name' style={{width: "70%", margin: "auto"}}/>
                         <input id="uploadCaptureInputFile" required onChange={this.onChange} className="form-control mt-2 mb-2" type="file" accept="image/*" style={{width: "70%", margin: "auto", cursor: "pointer"}}/>
                         <input type="submit" className="btn btn-success "/>
                     </div>
                 </form>
-                <button style={{marginTop: "-320px"}} className="btn btn-success" onClick={this.onclickDownload}>Download File</button>
+                <button style={{marginTop: "-320px"}} className="btn btn-success" onClick={this.onclickDownload}>Tải xuống</button>
             </div>
         )
     }

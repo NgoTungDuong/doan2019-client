@@ -43,21 +43,21 @@ export default class DropFile extends Component {
                     <Link to={`/result`}>
                         <Button size="large" type="primary" className="mt-5" onClick={this.onClick}>
                             <Icon id="icon" type="check" />
-                            Check File
+                            Kiểm tra tài liệu
                         </Button>
                     </Link>
                 ) : (
                     <Link disabled to='/result'>
                         <Button disabled size="large" type="primary" className="mt-5" onClick={this.onClick}>
                             <Icon id="icon" type="check" />
-                            Check File
+                            Kiểm tra tài liệu
                         </Button>
                     </Link>
                 )}
                 <Link to='/create-file'>
                     <Button  size="large" type="danger" className="ml-5">
                         <Icon id="icon" type="plus" />
-                        Create File
+                        Tạo mới tài liệu
                     </Button>
                 </Link>
 
