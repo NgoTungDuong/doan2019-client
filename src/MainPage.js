@@ -185,13 +185,17 @@ class MainPage extends Component {
       await window.web3.eth.getTransaction(file).then(result => {
         if(result) {
           try {
-            this.setState({inputTransaction: result.input, fileSuccess: "true"})
-            console.log(result)
+            try {
+              this.setState({inputTransaction: result.input, fileSuccess: "true"})
+              console.log(result)
 
-            const resultDecoder = decoder.decodeData(this.state.inputTransaction)
-            if(resultDecoder.inputs[0] !== undefined) {
-              this.setState({ fileHash: resultDecoder.inputs[0]})
-              console.log('link anh: ', this.state.fileHash)
+              const resultDecoder = decoder.decodeData(this.state.inputTransaction)
+              if(resultDecoder.inputs[0] !== undefined) {
+                this.setState({ fileHash: resultDecoder.inputs[0]})
+                console.log('link anh: ', this.state.fileHash)
+              }
+            } catch (e) {
+              console.log('loi', e)
             }
             fetch(`https://notarized-backend.herokuapp.com/api/posts/get/${file}`, {
               method: 'GET'
