@@ -43,7 +43,7 @@ class MainPage extends Component {
       ipfsHash: '',
       inputTransaction: '',
       transactionHash: '',
-      fileSuccess: "true",
+      fileSuccess: "false",
       isDuplicateFile: false,
       loading: true,
       listIpfsHash: []
@@ -180,6 +180,7 @@ class MainPage extends Component {
 
   handleOnclick = async (file) => {
     // console.log(file) // ==> transactionHash
+    console.log('111111')
     if(file) {
       await window.web3.eth.getTransaction(file).then(result => {
         if(result) {
