@@ -30,7 +30,7 @@ export default class NavBar extends React.Component {
                                     <MDBNavbarNav right>
                                         <MDBNavItem>
                                                 {/* <a className="btn btn-secondary btn-sm" href='/create-file'><strong>Đăng Nhập</strong></a> */}
-                                            {this.props.account ? (
+                                            {this.props.account !== '' ? (
                                                 <p className="white-text mt-2">Xin Chào, ADMIN: {this.props.account} </p>
                                             ) : (
                                                 <p className="white-text mt-2">Đăng Nhập MetaMask </p>
