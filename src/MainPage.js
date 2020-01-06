@@ -205,7 +205,10 @@ class MainPage extends Component {
                 })
               })
               .catch(e => console.log(e))
-          } catch (e) {console.log(e)}
+          } catch (e) {
+            console.log(e)
+            this.setState({fileSuccess: "false"})
+          }
         }else {
           // return window.alert('file cong chung sai')
           this.setState({ fileSuccess: "false" })
