@@ -184,27 +184,28 @@ class MainPage extends Component {
     if(file) {
       await window.web3.eth.getTransaction(file).then(result => {
         if(result) {
-          this.setState({inputTransaction: result.input, fileSuccess: "true"})
-          console.log(result)
-          
-          const resultDecoder = decoder.decodeData(this.state.inputTransaction)
-          if(resultDecoder.inputs[0] !== undefined) {
-            this.setState({ fileHash: resultDecoder.inputs[0]})
-            console.log('link anh: ', this.state.fileHash)
-          }
-          fetch(`https://notarized-backend.herokuapp.com/api/posts/get/${file}`, {
-            method: 'GET'
-          })
-            .then(res => res.json())
-            .then(data => {
-              console.log(data)
-              this.setState({
-                fileName: data.data.fileName,
-                createdAt: data.data.createdAt
-              })
-            })
-            .catch(e => console.log(e))
+          try {
+            this.setState({inputTransaction: result.input, fileSuccess: "true"})
+            console.log(result)
 
+            const resultDecoder = decoder.decodeData(this.state.inputTransaction)
+            if(resultDecoder.inputs[0] !== undefined) {
+              this.setState({ fileHash: resultDecoder.inputs[0]})
+              console.log('link anh: ', this.state.fileHash)
+            }
+            fetch(`https://notarized-backend.herokuapp.com/api/posts/get/${file}`, {
+              method: 'GET'
+            })
+              .then(res => res.json())
+              .then(data => {
+                console.log(data)
+                this.setState({
+                  fileName: data.data.fileName,
+                  createdAt: data.data.createdAt
+                })
+              })
+              .catch(e => console.log(e))
+          } catch (e) {console.log(e)}
         }else {
           // return window.alert('file cong chung sai')
           this.setState({ fileSuccess: "false" })
