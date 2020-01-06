@@ -185,17 +185,13 @@ class MainPage extends Component {
       await window.web3.eth.getTransaction(file).then(result => {
         if(result) {
           try {
-            try {
-              this.setState({inputTransaction: result.input, fileSuccess: "true"})
-              console.log(result)
+            this.setState({inputTransaction: result.input, fileSuccess: "true"})
+            console.log(result)
 
-              const resultDecoder = decoder.decodeData(this.state.inputTransaction)
-              if(resultDecoder.inputs[0] !== undefined) {
-                this.setState({ fileHash: resultDecoder.inputs[0]})
-                console.log('link anh: ', this.state.fileHash)
-              }
-            } catch (e) {
-              console.log('loi', e)
+            const resultDecoder = decoder.decodeData(this.state.inputTransaction)
+            if(resultDecoder.inputs[0] !== undefined) {
+              this.setState({ fileHash: resultDecoder.inputs[0]})
+              console.log('link anh: ', this.state.fileHash)
             }
             fetch(`https://notarized-backend.herokuapp.com/api/posts/get/${file}`, {
               method: 'GET'
@@ -215,7 +211,7 @@ class MainPage extends Component {
           this.setState({ fileSuccess: "false" })
           console.log('file cong chung sai')
         }
-      })
+      }).catch((e) => console.log(e))
     } else {
       window.alert('Xin hãy chọn tài liệu để kiểm tra!')
     }
